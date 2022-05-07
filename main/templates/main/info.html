@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel = "stylesheet" href = "{% static 'css/style_info.css' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
+        <title>Profiler</title>
+        <style>
+            body {
+             background: #c7b39b url({% static 'img/bck.jpg' %})
+             center ; 
+            }
+           </style>
+    </head>
+    <body>
+
+        <header class = "header"> 
+            <div class="container">
+                <div class="header__inner">
+                    <div class="header_logo">
+                        <img src={% static "img/logo.png" %} style="width:100px">
+                    </div>
+
+                    <nav class="nav">
+                        <a class="nav__link" href="info"> Информация</a>
+                        <a class="nav__link" href="works"> Работы</a>
+                        <a class="nav__link" href="links"> Ссылки</a>
+                    </nav>
+                </div>
+            </div>
+
+        </header>
+
+        <div class="about">
+            <div class="container">
+                <div class="about__container">
+                    <table class = "about__table">
+                        <tr>
+                            <td>
+                                <img src={% static "img/ProfilePic.jpg" %} height=400px;>
+                            </td>
+                            <td>
+                                <h2>Иванов Иван Иванович</h2>
+                                <div display="block-inline">
+                                    <p><h4>Опыт разработки более 10 лет.</h4></p>
+                                    <p><h4>Языки программирования: C#, F#, C++, Python</h4></p>
+                                    <p><h4>Коротко о себе:</h4></p>
+                                    <p>За свою карьеру, я принмал участие во множестве интересных проектов,
+                                        каждый из которых помогал мне расти. Поэтому за эти 10 лет, я достиг
+                                        уровня сеньора и поработал над множеством интересных проектов. Одним из которых стала 
+                                        разработка AstraLinux. Хоть сейчас вы о ней знаете мало, но скоро о ней узнают все.
+                                    </p>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+        </div>
+
+    </body>
+</html>

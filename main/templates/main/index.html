@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel = "stylesheet" href = "{% static 'css/style_auto.css' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
+        <title>Profiler</title>
+        <style>
+            body {
+             background: #c7b39b url({% static 'img/bck.jpg' %})
+             center ; 
+            }
+           </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+    </head>
+    <body>
+ 
+        <div class="container">
+            <form method="post" name="Авторизация">
+              {% csrf_token %}
+ 
+              <label for="email">Email</label>
+              <input type="email" name="email" id="email" placeholder="IvanIvanov@mail.ru">
+ 
+              <label for="password">Password</label>
+              <input type="password" name="password" id="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;">
+ 
+              <button type="submit">Login</button>
+              <a class="nav__link" href="registration">Registration</a>
+            </form>
+          </div>
+ 
+ 
+        <!--JavaScript-->
+      
+      
+      <script>
+
+        $(function() {
+                $.validator.addMethod(
+                  "regex",
+                  function(value, element, regexp) {
+                      var check = false;
+                      return this.optional(element) || regexp.test(value);
+                  },
+                  "Please check your input."
+              );
+              
+      
+            $("form[name='registration']").validate({
+
+              rules: {
+                email: {
+                  required: true,
+                  email: true
+                },
+                password: {
+                  required: true,
+                  minlength: 5
+                }
+              },
+
+              messages: {
+                password: {
+                  required: "Please provide a password",
+                  minlength: "Your password must be at least 5 characters long"
+                },
+                email: "Please enter a valid email address"
+              },
+              submitHandler: function(form) {
+                form.submit();
+              }
+            });
+          });
+      </script>
+    </body>
+ 
+</html>
+
+      

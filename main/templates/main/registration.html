@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel = "stylesheet" href = "{% static 'css/style_registration.css' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
+        <title>Profiler</title>
+        <style>
+            body {
+             background: #c7b39b url({% static 'img/bck.jpg' %})
+             center ; 
+            }
+           </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+    </head>
+    <body>
+ 
+        <div class="container">
+            <form method="post" name="registration">
+              {% csrf_token %}
+              
+              
+              
+              
+              <label for="firstname">First Name</label>
+              {{form.f_name}}
+ 
+              <label for="lastname">Last Name</label>
+              {{form.l_name}}
+ 
+              <label for="email">Email</label>
+              {{form.e_mail}}
+ 
+              <label for="password">Password</label>
+              {{form.password}}
+ 
+              <button type="submit">Register</button>
+              <span>{{error}}</span>
+            </form>
+          </div>
+ 
+ 
+        <!--JavaScript-->
+      
+      
+      <script>
+
+        $(function() {
+                $.validator.addMethod(
+                  "regex",
+                  function(value, element, regexp) {
+                      var check = false;
+                      return this.optional(element) || regexp.test(value);
+                  },
+                  "Please check your input."
+              );
+              
+      
+            $("form[name='registration']").validate({
+
+              rules: {
+                f_name: {
+                  required: true,
+                  minlength: 2,
+                  regex : /^([A-Z][a-z]+)$/
+                },
+                l_name: {
+                  required: true,
+                  minlength: 2,
+                  regex : /^([A-Z][a-z]+)$/
+                },
+                e_mail: {
+                  required: true,
+                  email: true
+                },
+                password: {
+                  required: true,
+                  minlength: 5
+                }
+              },
+
+              messages: {
+                firstname:{
+                  required: "Please enter your firstname",
+                  minlength: "Your name must be at least 2 characters long"
+                },
+                lastname:{
+                  required: "Please enter your lastname",
+                  minlength: "Your name must be at least 2 characters long"
+                }, 
+                password: {
+                  required: "Please provide a password",
+                  minlength: "Your password must be at least 5 characters long"
+                },
+                email: "Please enter a valid email address"
+              },
+              submitHandler: function(form) {
+                form.submit();
+              }
+            });
+          });
+      </script>
+    </body>
+ 
+</html>
+
+      

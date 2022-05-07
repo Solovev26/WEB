@@ -1,0 +1,150 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel = "stylesheet" href = "{% static 'css/style_links.css' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+        <title>Profiler</title>
+        <style>
+            body {
+             background: #c7b39b url({% static 'img/bck.jpg' %})
+             center ; 
+            }
+           </style>
+    </head>
+    <body>
+
+        <header class = "header"> 
+            <div class="container">
+                <div class="header__inner">
+                    <div class="header_logo">
+                        <img src={% static "img/logo.png" %} style="width:100px">
+                    </div>
+
+                    <nav class="nav">
+                        <a class="nav__link" href="info"> Информация</a>
+                        <a class="nav__link" href="works"> Работы</a>
+                        <a class="nav__link" href="links"> Ссылки</a>
+                    </nav>
+                </div>
+            </div>
+
+        </header>
+
+        <div class="about">
+            <div class="container">
+                <div class="about__container">
+
+                    <div class="links">
+                        
+                        <div class="links__items">
+                            <img clas="links__icon" src={% static "img/GitHub.png" %}><br>
+                            <a class="links__link" href="https://github.com/"> Github.com</a>
+                        </div>
+
+                        <div class="links__items">
+                            <img clas="links__icon" src={% static "img/GitLab.png" %} style="width:130px"><br>
+                            <a class="links__link" href="https://about.gitlab.com/"> GitLab.com</a>
+                        </div>
+
+                        <div class="links__items">
+                            <img clas="links__icon" src={% static "img/Asembla.png" %} style="width:110px"><br>
+                            <a class="links__link" href="https://www.assembla.com/home"> Assembla.com</a>
+                        </div>
+
+                        <div class="links__items">
+                            <img clas="links__icon" src={% static "img/In.png" %} style="width:130px"><br>
+                            <a class="links__link" href="https://ru.linkedin.com"> LinkedIn</a>
+                        </div>
+
+                        <div class="links__items">
+                            <img clas="links__icon" src={% static "img/fb.png" %} style="width:130px"><br>
+                            <a class="links__link" href="https://ru-ru.facebook.com"> Facebook</a>
+                        </div>
+
+                        <div class="links__items">
+                            <img clas="links__icon" src={% static "img/tg.png" %} style="width:130px"><br>
+                            <a class="links__link" href="https://web.telegram.org/z/"> Telegram</a>
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="linker">
+                        <ul>
+                            <li>
+                                <h4> Телефоны для связи</h4>
+                                 <ol> 
+                                     <li>8-938-483-56-74</li>
+                                     <li>8-938-483-56-74</li>
+                                     <li>8-938-483-56-74</li>
+                                 </ol>
+                            </li>
+                            <li>
+                                <h4> Почты для связи</h4>
+                                 <ol> 
+                                     <li>work@gmail.com</li>
+                                     <li>work@ya.ru</li>
+                                     <li>work@smth.com</li>
+                                 </ol>
+                            </li>
+                        </ul>
+                    </div>
+                    ​<div id="feedback-box">
+
+                        <h2>Связь со мной</h2>
+                     
+                        <form method="post" id="feedback-form">
+
+                          {% csrf_token %}
+                          <div class="input-bloc w1">
+                             <label for="name">Имя:</label>
+                             <input type="text" size="25" name="name" id="name" />
+                             <div class="error-box"></div> <!-- Контейнер для ошибок -->
+                          </div>
+                     
+                          <div class="input-bloc w1">
+                             <label for="email">Email:</label>
+                             <input type="text" size="25" name="email" id="email" />
+                             <div class="error-box"></div>
+                          </div>
+                     
+                          <div class="input-bloc msg">
+                             <label for="message">Сообщение:</label>
+                             <textarea name="message" cols="50" rows="10" id="message"></textarea>
+                             <div class="error-box"></div>
+                          </div>
+                          <button type="submit" id="submit" onclick="SendIt();">Отправить сообщение</button>
+                        </form>
+                     </div>
+                     <script>
+                         function SendIt(){
+                            var chatid = "-1001608424018";
+                            var token = "5294058850:AAHLhlbP-cpItvrv-rWfFma1iiPWARjHCao";
+                            var text = document.getElementById('message').value+"\nfrom: "+document.getElementById('name').value+"\nemail: "+document.getElementById('email').value;
+                            //Отправляем текст в наш телеграм канал
+                            otpravka(token,text,chatid);
+                            
+                            function otpravka(token,text,chatid){
+                            var z=$.ajax({  
+                            type: "POST",  
+                            url: "https://api.telegram.org/bot"+token+"/sendMessage?chat_id="+chatid,
+                            data: "parse_mode=HTML&text="+encodeURIComponent(text), 
+                            }); 
+                            };
+                         }
+                     </script>
+                     
+                </div>
+            </div>
+            
+        </div>
+
+    </body>
+</html>
