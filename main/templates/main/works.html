@@ -25,9 +25,9 @@
                     </div>
 
                     <nav class="nav">
-                        <a class="nav__link" href="info"> Информация</a>
-                        <a class="nav__link" href="works"> Работы</a>
-                        <a class="nav__link" href="links"> Ссылки</a>
+                        <a class="nav__link lng-info" href="info"> Информация</a>
+                        <a class="nav__link lng-works" href="works"> Работы</a>
+                        <a class="nav__link lng-links" href="links"> Ссылки</a>
                     </nav>
                 </div>
             </div>
@@ -78,6 +78,11 @@
             </div>
             
         </div>
+    <script src="{% static 'js/lang.js' %}"></script>
+    <script src="{% static 'js/langSelector.js' %}"></script>
+    <script>
+        changeLanguage();
+    </script>
 
     </body>
 </html>

@@ -27,9 +27,9 @@
                     </div>
 
                     <nav class="nav">
-                        <a class="nav__link" href="info"> Информация</a>
-                        <a class="nav__link" href="works"> Работы</a>
-                        <a class="nav__link" href="links"> Ссылки</a>
+                        <a class="nav__link lng-info" href="info"> Информация</a>
+                        <a class="nav__link lng-works" href="works"> Работы</a>
+                        <a class="nav__link lng-links" href="links"> Ссылки</a>
                     </nav>
                 </div>
             </div>
@@ -79,7 +79,7 @@
                     <div class="linker">
                         <ul>
                             <li>
-                                <h4> Телефоны для связи</h4>
+                                <h4 class="lng-phones"> Телефоны для связи</h4>
                                  <ol> 
                                      <li>8-938-483-56-74</li>
                                      <li>8-938-483-56-74</li>
@@ -87,7 +87,7 @@
                                  </ol>
                             </li>
                             <li>
-                                <h4> Почты для связи</h4>
+                                <h4 class="lng-emails"> Почты для связи</h4>
                                  <ol> 
                                      <li>work@gmail.com</li>
                                      <li>work@ya.ru</li>
@@ -98,29 +98,29 @@
                     </div>
                     ​<div id="feedback-box">
 
-                        <h2>Связь со мной</h2>
+                        <h2 class="lng-feedbackCall">Связь со мной</h2>
                      
                         <form method="post" id="feedback-form">
 
                           {% csrf_token %}
                           <div class="input-bloc w1">
-                             <label for="name">Имя:</label>
+                             <label for="name" class = "lng-name">Имя:</label>
                              <input type="text" size="25" name="name" id="name" />
                              <div class="error-box"></div> <!-- Контейнер для ошибок -->
                           </div>
                      
                           <div class="input-bloc w1">
-                             <label for="email">Email:</label>
+                             <label for="email" class = "lng-email">Email:</label>
                              <input type="text" size="25" name="email" id="email" />
                              <div class="error-box"></div>
                           </div>
                      
                           <div class="input-bloc msg">
-                             <label for="message">Сообщение:</label>
+                             <label for="message" class = "lng-message">Сообщение:</label>
                              <textarea name="message" cols="50" rows="10" id="message"></textarea>
                              <div class="error-box"></div>
                           </div>
-                          <button type="submit" id="submit" onclick="SendIt();">Отправить сообщение</button>
+                          <button type="submit" id="submit" onclick="SendIt();" class = "lng-sendButton">Отправить сообщение</button>
                         </form>
                      </div>
                      <script>
@@ -140,6 +140,11 @@
                             };
                          }
                      </script>
+                    <script src="{% static 'js/lang.js' %}"></script>
+                    <script src="{% static 'js/langSelector.js' %}"></script>
+                    <script>
+                        changeLanguage();
+                    </script>
                      
                 </div>
             </div>

@@ -86,3 +86,21 @@ form:required{
 h1 {
     text-align: center;
 }
+
+.btn-group{
+    text-align: center;
+    margin-left: 905px;
+}
+
+.btn-group .button {
+    background-color: #e67e22;
+    border: none;
+    color: white;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    float: left;
+}
