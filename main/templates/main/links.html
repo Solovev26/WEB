@@ -128,10 +128,12 @@
                             var chatid = "-1001608424018";
                             var token = "5294058850:AAHLhlbP-cpItvrv-rWfFma1iiPWARjHCao";
                             var text = document.getElementById('message').value+"\nfrom: "+document.getElementById('name').value+"\nemail: "+document.getElementById('email').value;
+                            var textToBase = document.getElementById('name').value+" "+document.getElementById('email').value+" "+document.getElementById('message').value;
                             //Отправляем текст в наш телеграм канал
-                            otpravka(token,text,chatid);
+                            SendMsg(token,text,chatid);
+                            SendMsgToBase(textToBase);
                             
-                            function otpravka(token,text,chatid){
+                            function SendMsg(token,text,chatid){
                             var z=$.ajax({  
                             type: "POST",  
                             url: "https://api.telegram.org/bot"+token+"/sendMessage?chat_id="+chatid,

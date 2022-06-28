@@ -44,6 +44,7 @@
         <script src="{% static 'js/lang.js' %}"></script>
         <script src="{% static 'js/langSelector.js' %}"></script>
         <script>
+            changeLanguage();
             let lng = "en";
             $(document_load);
 
@@ -62,7 +63,6 @@
                 localStorage.setItem("lng", lng);
                 changeLanguage();
             }
-            changeLanguage();
 
         </script>
  
